@@ -5,4 +5,5 @@ const exampleSchema = mongoose.Schema({
   email: { type: String },
 });
 
-export default mongoose.model("example_record", exampleSchema);
+const exampleModel = mongoose.model("example_record", exampleSchema);
+export default exampleModel;
