@@ -1,1 +1,3 @@
-PORT=3001
+PORT=8080
+DB_URL=""
+NODE_ENV=development
