@@ -1,6 +1,4 @@
-import "./modules/db/connection";
 import { finishApp, createApp } from "./app";
-import authModule from "./modules/auth";
 
 import { readSecret } from "./config/read-secret";
 import exampleModule from "./modules/example";
@@ -11,7 +9,6 @@ app.get("/healthy", (req, res) => {
   res.sendStatus(200);
 });
 
-authModule.init(app);
 exampleModule.init(app);
 finishApp(app);
 
