@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2019"],
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "allowJs": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "checkJs":true,
+    "forceConsistentCasingInFileNames": true,
+
+
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

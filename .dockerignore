@@ -1,0 +1,5 @@
+node_modules
+managed-service
+dist
+Taskfile.yaml
+Dockerfile

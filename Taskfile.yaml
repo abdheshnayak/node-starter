@@ -1,0 +1,27 @@
+version: "3"
+
+tasks:
+  svc:up:
+    cmds:
+      - pushd ./msvc && docker-compose up -d && popd
+  svc:down:
+    cmds:
+      - pushd ./msvc && docker-compose down && popd
+  container:build:
+    vars:
+      image: '{{ .image | default "backend" }}'
+      tag: '{{ .tag | default "latest" }}'
+    cmds:
+      - docker buildx build --load -t backend:latest .
+  container:run:
+    vars:
+      image: '{{ .image | default "backend" }}'
+      tag: '{{ .tag | default "latest" }}'
+    cmds:
+      - docker run -p 3000:3000 backend:latest
+  container:push:
+    vars:
+      image: '{{ .image | default "backend" }}'
+      tag: '{{ .tag | default "latest" }}'
+    cmds:
+      - docker push backend:latest
