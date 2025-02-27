@@ -1,4 +1,4 @@
-FROM node:23.8.0-alpine3.21 as builder
+FROM node:23.8.0-alpine3.21 AS builder
 RUN npm i -g pnpm
 
 WORKDIR /app

@@ -3,3 +3,4 @@ managed-service
 dist
 Taskfile.yaml
 Dockerfile
+.secrets

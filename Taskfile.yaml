@@ -1,6 +1,15 @@
 version: "3"
 
+dotenv:
+  - .secrets/env
+
 tasks:
+  dev:
+    cmds:
+      - pnpm dev
+  start:
+    cmds:
+      - pnpm start
   svc:up:
     cmds:
       - pushd ./msvc && docker-compose up -d && popd
@@ -18,10 +27,11 @@ tasks:
       image: '{{ .image | default "backend" }}'
       tag: '{{ .tag | default "latest" }}'
     cmds:
-      - docker run -p 3000:3000 backend:latest
+      - docker run -it --rm --init --env-file .secrets/env -p 3000:3000 backend:latest 
   container:push:
     vars:
       image: '{{ .image | default "backend" }}'
       tag: '{{ .tag | default "latest" }}'
     cmds:
       - docker push backend:latest
+

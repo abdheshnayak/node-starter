@@ -1,4 +1,6 @@
-const esbuild = require("esbuild");
+import esbuild from "esbuild";
+
+import packageJson from "./package.json" with { type: "json" };
 
 esbuild.build({
   entryPoints: ["src/index.ts"], // Change to your main TypeScript file
@@ -8,6 +10,7 @@ esbuild.build({
   sourcemap: true, // Generate source maps
   platform: "node", // Target Node.js runtime
   target: "node18", // Adjust based on your Node.js version
-  external: ["express"], // Exclude dependencies that should be resolved at runtime
+  external: Object.keys(packageJson.dependencies), // Exclude dependencies that should be resolved at runtime
+  format: "esm", // Output as ES module
   loader: { ".ts": "ts" }, // Handle TypeScript files
 }).catch(() => process.exit(1));

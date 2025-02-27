@@ -4,4 +4,6 @@ export const validateEnv = <T,>(schema: yup.Schema<T>) => {
   const env = process.env;
 
   return schema.validateSync(env, { stripUnknown: true }) as yup.Asserts<typeof schema>;
-}; 
+};
+
+export type EnvType<T extends yup.Schema<any>> = yup.InferType<T>;
