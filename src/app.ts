@@ -1,8 +1,6 @@
 import "./config/passport";
 
-import { dirname } from "node:path";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -15,9 +13,8 @@ import passport from "passport";
 
 import { getEnv } from "./config/load-env";
 import { useJwt } from "./config/passport";
+import { _dirname } from "./lib/node-utils";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 export const createApp = () => {
   useJwt(passport);
@@ -43,12 +40,12 @@ export const createApp = () => {
     return next();
   });
 
-  app.use(express.static(path.join(__dirname, "public")));
-  app.use(express.static(__dirname + "/public"));
+  app.use(express.static(path.join(_dirname(import.meta.url), "public")));
+  app.use(express.static(_dirname(import.meta.url) + "/public"));
   app.use(
     fileUpload({
       useTempFiles: true,
-      tempFileDir: path.join(__dirname, "tmp"),
+      tempFileDir: "/tmp",
     })
   );
   return app;
